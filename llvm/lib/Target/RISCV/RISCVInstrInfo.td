@@ -676,6 +676,22 @@ def SFENCE_VMA : RVInstR<0b0001001, 0b000, OPC_SYSTEM, (outs),
   let rd = 0;
 }
 
+def PLOAD : RVInstRCONV<0b000, OPC_SYSTEM, (outs GPR:$rd),
+                         (ins GPR:$rs1, GPR:$rs2, simm7:$imm7),
+                         "pload", "$rd, $rs1, $rs2, $imm7">, Sched<[]>;
+
+def PSTORE : RVInstRCONV<0b001, OPC_SYSTEM, (outs GPR:$rd),
+                         (ins GPR:$rs1, GPR:$rs2, simm7:$imm7),
+                         "pstore", "$rd, $rs1, $rs2, $imm7">, Sched<[]>;
+
+def CONV : RVInstRCONV<0b010, OPC_SYSTEM, (outs GPR:$rd),
+                         (ins GPR:$rs1, GPR:$rs2, simm7:$imm7),
+                         "conv", "$rd, $rs1, $rs2, $imm7">, Sched<[]>;
+
+def PSHLI : RVInstRCONV<0b011, OPC_SYSTEM, (outs GPR:$rd),
+                         (ins GPR:$rs1, GPR:$rs2, simm7:$imm7),
+                         "pshli", "$rd, $rs1, $rs2, $imm7">, Sched<[]>;
+
 //===----------------------------------------------------------------------===//
 // Debug instructions
 //===----------------------------------------------------------------------===//
